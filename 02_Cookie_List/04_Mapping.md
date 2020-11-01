@@ -4,14 +4,13 @@
    {
      name: "Katakeet Cookie",
      price: 7,
-     image:
-       "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fassets.marthastewart.com%2Fstyles%2Fwmax-750%2Fd34%2Feaster-chick-egg-cookies-102921707%2Feaster-chick-egg-cookies-102921707_horiz.jpg%3Fitok%3DUBZfwNLI"
+     image: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fassets.marthastewart.com%2Fstyles%2Fwmax-750%2Fd34%2Feaster-chick-egg-cookies-102921707%2Feaster-chick-egg-cookies-102921707_horiz.jpg%3Fitok%3DUBZfwNLI"
    }
    ```
 
-2. Nothing happened. We need to hard-code the new cookie in JSX. And what if we deleted one of the other cookies? We'll get an error! Is this convenient? How can the user add or delete cookies?
+2. Nothing happened. We need to hard-code the new cookie in JSX. And what if we deleted one of the other cookies? We'll get an error! Is this convenient? What if we want the user add or delete cookies?
 
-3. To solve this, we need to iterate over our `cookies` and create a new array of the cookie data in JSX. What iteration method can we use to iterate over an array, modify it and save the modified elements in a new array? The answer is `map`.
+3. To solve this, we need to iterate over our `cookies` array and create a new array of the cookie data in JSX. What iteration method can we use to iterate over an array, modify it and save the modified elements in a new array? The answer is `.map()`.
 
    ```jsx
    function App(){
@@ -22,7 +21,7 @@
    }
    ```
 
-4. For now, let's start with returning the name of the cookie only and render it.
+4. For now, let's start with returning the name of the cookie only and render it in a `<p>` tag.
 
    ```jsx
    function App() {
@@ -37,26 +36,27 @@
              src="https://i.pinimg.com/originals/8f/cf/71/8fcf719bce331fe39d7e31ebf07349f3.jpg"
              style={styles.shopImage}
            />
+         </div>
+         <div style={styles.cookieList}>
            {cookieList}
          </div>
-         [...]
        </div>
      );
    }
    ```
 
-5. It worked! Now instead of just returning `cookie.name`, let's return the whole cookie section!
+5. It worked! Now instead of just returning `cookie.name`, let's return the whole cookie section! We must change `cookies[0]` to `cookie`.
 
    ```jsx
    const cookieList = cookies.map((cookie) => (
      <div style={styles.cookie}>
        <img
          style={styles.cookieImage}
-         alt={cookies[0].name}
-         src={cookies[0].image}
+         alt={cookie.name}
+         src={cookie.image}
        />
-       <p style={styles.text}>{cookies[0].name}</p>
-       <p style={styles.text}>{cookies[0].price} KD</p>
+       <p style={styles.text}>{cookie.name}</p>
+       <p style={styles.text}>{cookie.price} KD</p>
      </div>
    ));
    ```
@@ -67,23 +67,11 @@
    <div style={styles.list}>{cookieList}</div>
    ```
 
-7. But now it's only rendering the first cookie, that's because we must replace `cookies[0]` with `cookie` which represents every cookie in our array.
-
-   ```jsx
-   const cookieList = cookies.map((cookie) => (
-     <div style={styles.cookie}>
-       <img style={styles.cookieImage} alt={cookie.name} src={cookie.image} />
-       <p style={styles.text}>{cookie.name}</p>
-       <p style={styles.text}>{cookie.price} KD</p>
-     </div>
-   ));
-   ```
-
 8. Yay! Our new cookie is added! Let's open the console, we got a warning ladies and gentlemen:
 
    `Warning: Each child in a list should have a unique "key" prop.`
 
-9. Now in general we can ignore warnings, but this warning will give us issues later on. Basically, when we save JSX elements in an array, `React` needs to a unique `key` for every element. This key must be added to the parent tag as an attribute, but what will the unique value be?
+9. Now in general we can ignore warnings, but this warning will give us issues later on. Basically, when we save JSX elements in an array, `React` needs to have a unique `key` for every element. This key must be added to the parent tag as an attribute, but what will the unique value be?
 
    ```jsx
    const cookieList = cookies.map((cookie) => (
@@ -108,7 +96,7 @@
       },
       {
         id: 2,
-        name: "Cute Cookie",
+        name: "Adorable Cookie",
         price: 15,
         image:
           "https://i.pinimg.com/originals/f6/3e/2a/f63e2a1cd0c7d3c0ab9cd277d3f32050.jpg",
@@ -125,7 +113,7 @@
     export default cookies;
     ```
 
-11. Now we can access the `id` through `cookie.id` in `map`.
+11. Now we can access the `id` through `cookie.id` in the `.map()`.
 
     ```jsx
     const cookieList = cookies.map((cookie) => (
