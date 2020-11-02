@@ -39,7 +39,7 @@ import { ThemeProvider } from "styled-components";
 
 7. Amazing! It worked! Let's apply it to `GlobalStyle` as well:
 
-```javascript
+```
 const GlobalStyle = createGlobalStyle`
   body {
     color: ${(props) => props.theme.mainColor};
