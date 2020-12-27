@@ -35,8 +35,6 @@
 8. Let's remove all the JSX code, the logo and CSS imports and start building our website's home page and learn the differences.
 
    ```jsx
-   import React from "react";
-
    function App() {
      return (
 
@@ -44,5 +42,4 @@
    }
 
    export default App;
-
    ```
