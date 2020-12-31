@@ -14,7 +14,7 @@
 
    ```jsx
    function App(){
-     const cookieList = cookies.map(cookie => ())
+     const cookieList = cookiesData.map(cookie => ())
      return (
        [...]
      )
@@ -25,7 +25,7 @@
 
    ```jsx
    function App() {
-     const cookieList = cookies.map((cookie) => <p>{cookie.name}</p>);
+     const cookieList = cookiesData.map((cookie) => <p>{cookie.name}</p>);
      return (
        <div>
          <div style={styles.body}>
@@ -37,24 +37,18 @@
              style={styles.shopImage}
            />
          </div>
-         <div style={styles.cookieList}>
-           {cookieList}
-         </div>
+         <div style={styles.cookieList}>{cookieList}</div>
        </div>
      );
    }
    ```
 
-5. It worked! Now instead of just returning `cookie.name`, let's return the whole cookie section! We must change `cookies[0]` to `cookie`.
+5. It worked! Now instead of just returning `cookie.name`, let's return the whole cookie section! We must change `cookiesData[0]` to `cookie`.
 
    ```jsx
-   const cookieList = cookies.map((cookie) => (
+   const cookieList = cookiesData.map((cookie) => (
      <div style={styles.cookie}>
-       <img
-         style={styles.cookieImage}
-         alt={cookie.name}
-         src={cookie.image}
-       />
+       <img style={styles.cookieImage} alt={cookie.name} src={cookie.image} />
        <p style={styles.text}>{cookie.name}</p>
        <p style={styles.text}>{cookie.price} KD</p>
      </div>
@@ -67,60 +61,4 @@
    <div style={styles.list}>{cookieList}</div>
    ```
 
-8. Yay! Our new cookie is added! Let's open the console, we got a warning ladies and gentlemen:
-
-   `Warning: Each child in a list should have a unique "key" prop.`
-
-9. Now in general we can ignore warnings, but this warning will give us issues later on. Basically, when we save JSX elements in an array, `React` needs to have a unique `key` for every element. This key must be added to the parent tag as an attribute, but what will the unique value be?
-
-   ```jsx
-   const cookieList = cookies.map((cookie) => (
-     <div style={styles.cookie} key={}>
-       <img style={styles.cookieImage} alt={cookie.name} src={cookie.image} />
-       <p style={styles.text}>{cookie.name}</p>
-       <p style={styles.text}>{cookie.price} KD</p>
-     </div>
-   ));
-   ```
-
-10. Let's take a look at the `cookies` array, the name and image are unique values. But we need something more reliable, so we will add a field called `id` which is a unique that will never be repeated.
-
-    ```javascript
-    const cookies = [
-      {
-        id: 1,
-        name: "Chocolate Chip Cookie",
-        price: 10,
-        image:
-          "https://joyfoodsunshine.com/wp-content/uploads/2016/01/best-chocolate-chip-cookies-recipe-ever-no-chilling-1.jpg",
-      },
-      {
-        id: 2,
-        name: "Adorable Cookie",
-        price: 15,
-        image:
-          "https://i.pinimg.com/originals/f6/3e/2a/f63e2a1cd0c7d3c0ab9cd277d3f32050.jpg",
-      },
-      {
-        id: 3,
-        name: "Katakeet Cookie",
-        price: 7,
-        image:
-          "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fassets.marthastewart.com%2Fstyles%2Fwmax-750%2Fd34%2Feaster-chick-egg-cookies-102921707%2Feaster-chick-egg-cookies-102921707_horiz.jpg%3Fitok%3DUBZfwNLI",
-      },
-    ];
-
-    export default cookies;
-    ```
-
-11. Now we can access the `id` through `cookie.id` in the `.map()`.
-
-    ```jsx
-    const cookieList = cookies.map((cookie) => (
-      <div style={styles.cookie} key={cookie.id}>
-        <img style={styles.cookieImage} alt={cookie.name} src={cookie.image} />
-        <p style={styles.text}>{cookie.name}</p>
-        <p style={styles.text}>{cookie.price} KD</p>
-      </div>
-    ));
-    ```
+7. Yay! Our new cookie is added!

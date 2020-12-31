@@ -13,7 +13,7 @@
    ```javascript
    const CookieItem = () => {
      return (
-       <div style={styles.cookie} key={cookie.id}>
+       <div style={styles.cookie}>
          <img style={styles.cookieImage} alt={cookie.name} src={cookie.image} />
          <p style={styles.text}>{cookie.name}</p>
          <p style={styles.text}>{cookie.price} KD</p>
@@ -45,7 +45,7 @@
 8. We will render `CookieItem` in the `map` method.
 
    ```javascript
-   const cookieList = cookies.map((cookie) => <CookieItem />);
+   const cookieList = cookiesData.map((cookie) => <CookieItem />);
    ```
 
 9. And we got an error! `'cookie' is not defined`. But how can we pass `cookie` from the `map` method in `CookieList` to `CookieItem`? Especially that `cookie` represents a different cookie through the iteration, every instance of `CookieItem` needs a different `cookie`!

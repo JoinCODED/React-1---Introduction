@@ -61,7 +61,7 @@ Let's also create a component for our list of cookies.
 
    ```javascript
    const CookieList = () => {
-     const cookieList = cookies.map((cookie) => (
+     const cookieList = cookiesData.map((cookie) => (
        <div style={styles.cookie}>
          <img style={styles.cookieImage} alt={cookie.name} src={cookie.image} />
          <p style={styles.text}>{cookie.name}</p>
@@ -72,13 +72,13 @@ Let's also create a component for our list of cookies.
    };
    ```
 
-10. We got another error: `'cookies' is not defined`.
+10. We got another error: `'cookiesData' is not defined`.
 
-11. We need to import `cookies` as well in `CookieList.js`.
+11. We need to import `cookiesData` as well in `CookieList.js`.
 
     ```javascript
     // Data
-    import cookies from "../cookies";
+    import cookiesData from "../cookies";
 
     // Styling
     import styles from "../styles";

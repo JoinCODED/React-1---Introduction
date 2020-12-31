@@ -116,7 +116,7 @@ This process is called passing `Chocolate Cookie` as a prop.
     ```javascript
     const CookieList = () => {
       // const cookieList = cookies.map((cookie) => (
-      //   <CookieItem cookie={cookie} key={cookie.id} />
+      //   <CookieItem cookie={cookie} />
       // ));
       const cookie = {
         name: "Chocolate Cookie",
@@ -136,7 +136,7 @@ This process is called passing `Chocolate Cookie` as a prop.
 
     ```jsx
     return (
-      <div style={styles.cookie} key={cookie.id}>
+      <div style={styles.cookie}>
         <p>{props.cookie.name}</p>
         <p>{props.cookie.price}</p>
         <img src={props.cookie.image} />
@@ -153,7 +153,7 @@ This process is called passing `Chocolate Cookie` as a prop.
     const CookieItem = props => {
       const cookie = props.cookie;
       return (
-        <div style={styles.cookie} key={cookie.id}>
+        <div style={styles.cookie}>
           <p>{cookie.name}</p>
           <p>{cookie.price}</p>
           <img src={cookie.image} />
@@ -170,7 +170,7 @@ This process is called passing `Chocolate Cookie` as a prop.
     const CookieItem = props => {
       const cookie = props.cookie;
       return (
-        <div style={styles.cookie} key={cookie.id}>
+        <div style={styles.cookie}>
             <img style={styles.cookieImage} alt={cookie.name} src={cookie.image} />
             <p style={styles.text}>{cookie.name}</p>
             <p style={styles.text}>{cookie.price} KD</p>
@@ -203,15 +203,54 @@ This process is called passing `Chocolate Cookie` as a prop.
       ));
     ```
 
-19. One last thing. The proper place for the key is passing it as a prop to `CookieItem`. Don't forget to remove it from the `CookieItem` component.
+    Let's open the console, we got a warning ladies and gentlemen:
 
-    ```javascript
-    const CookieList = () => {
-      const cookieList = cookies.map(cookie => (
-        <CookieItem cookie={cookie} key={cookie.id} />
-      ));
+    `Warning: Each child in a list should have a unique "key" prop.`
+
+19. Now in general we can ignore warnings, but this warning will give us issues later on. Basically, when we save JSX elements in an array, `React` needs to have a unique `key` for every element. This key must be added to the parent tag as an attribute, but what will the unique value be?
+
+    ```jsx
+    const cookieList = cookies.map((cookie) => (
+      <CookieItem cookie={cookie} key={} />
+    ));
     ```
 
-20. Keep in mind that `key` can't be used, it's for the code not for us. If you take a look at the dev tools, you'll see that `key` is not in the `props` object, so we have no access to it.
+20. Let's take a look at the `data` array, the name and image are unique values. But we need something more reliable, so we will add a field called `id` which is a unique that will never be repeated.
 
-21. Our code looks much better now! How do you feel about it?
+    ```javascript
+    const data = [
+      {
+        id: 1,
+        name: "Chocolate Chip Cookie",
+        price: 10,
+        image:
+          "https://joyfoodsunshine.com/wp-content/uploads/2016/01/best-chocolate-chip-cookies-recipe-ever-no-chilling-1.jpg",
+      },
+      {
+        id: 2,
+        name: "Adorable Cookie",
+        price: 15,
+        image:
+          "https://i.pinimg.com/originals/f6/3e/2a/f63e2a1cd0c7d3c0ab9cd277d3f32050.jpg",
+      },
+      {
+        id: 3,
+        name: "Katakeet Cookie",
+        price: 7,
+        image:
+          "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fassets.marthastewart.com%2Fstyles%2Fwmax-750%2Fd34%2Feaster-chick-egg-cookies-102921707%2Feaster-chick-egg-cookies-102921707_horiz.jpg%3Fitok%3DUBZfwNLI",
+      },
+    ];
+
+    export default data;
+    ```
+
+21. Now we can access the `id` through `cookie.id` in the `.map()`.
+
+    ```jsx
+    const cookieList = cookies.map((cookie) => (
+      <CookieItem cookie={cookie} key={cookie.id} />
+    ));
+    ```
+
+22. Keep in mind that `key` can't be used, it's for the code not for us. If you take a look at the dev tools, you'll see that `key` is not in the `props` object, so we have no access to it.
