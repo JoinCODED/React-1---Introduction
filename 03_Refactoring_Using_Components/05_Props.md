@@ -115,7 +115,7 @@ This process is called passing `Chocolate Cookie` as a prop.
 
     ```javascript
     const CookieList = () => {
-      // const cookieList = cookies.map((cookie) => (
+      // const cookieList = cookiesData.map((cookie) => (
       //   <CookieItem cookie={cookie} />
       // ));
       const cookie = {
@@ -184,9 +184,9 @@ This process is called passing `Chocolate Cookie` as a prop.
     const CookieList = () => {
       return (
         <div style={styles.list}>
-          <CookieItem cookie={cookies[0]} />
-          <CookieItem cookie={cookies[1]} />
-          <CookieItem cookie={cookies[2]} />
+          <CookieItem cookie={cookiesData[0]} />
+          <CookieItem cookie={cookiesData[1]} />
+          <CookieItem cookie={cookiesData[2]} />
         </div>
       );
     };
@@ -198,7 +198,7 @@ This process is called passing `Chocolate Cookie` as a prop.
 
     ```javascript
     const CookieList = () => {
-      const cookieList = cookies.map(cookie => (
+      const cookieList = cookiesData.map(cookie => (
         <CookieItem cookie={cookie} />
       ));
     ```
@@ -210,7 +210,7 @@ This process is called passing `Chocolate Cookie` as a prop.
 19. Now in general we can ignore warnings, but this warning will give us issues later on. Basically, when we save JSX elements in an array, `React` needs to have a unique `key` for every element. This key must be added to the parent tag as an attribute, but what will the unique value be?
 
     ```jsx
-    const cookieList = cookies.map((cookie) => (
+    const cookieList = cookiesData.map((cookie) => (
       <CookieItem cookie={cookie} key={} />
     ));
     ```
@@ -248,7 +248,7 @@ This process is called passing `Chocolate Cookie` as a prop.
 21. Now we can access the `id` through `cookie.id` in the `.map()`.
 
     ```jsx
-    const cookieList = cookies.map((cookie) => (
+    const cookieList = cookiesData.map((cookie) => (
       <CookieItem cookie={cookie} key={cookie.id} />
     ));
     ```

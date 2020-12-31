@@ -4,6 +4,6 @@ Until this point, we've been using inline styling to style our websites and we'v
 
 1. To install dependencies, we will type `yarn add` followed by the name of the dependency. In this case we're installing styled components:
 
-```shell
-  $ yarn add styled-components
-```
+   ```shell
+     $ yarn add styled-components
+   ```

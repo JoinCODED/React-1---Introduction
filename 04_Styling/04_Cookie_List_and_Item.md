@@ -1,120 +1,106 @@
 1. Let's move to `CookieList`, I want you all to tell me what the styled component will look like, let's call it `ListWrapper` and copy the styling from `styles.list`.
 
-```javascript
-const ListWrapper = styled.div`
-  align-items: center;
-  justify-content: center;
-  display: flex;
-`;
-```
+   ```javascript
+   export const ListWrapper = styled.div`
+     align-items: center;
+     justify-content: center;
+     display: flex;
+   `;
+   ```
 
-2. Don't forget to export it
+2. In `CookieList`, import `ListWrapper` and replace `div` with it
 
-```javascript
-export { Description, ListWrapper, Title, ShopImage };
-```
+   ```javascript
+   // Styling
+   import { ListWrapper } from "../styles";
+   ```
 
-3. In `CookieList`, import `ListWrapper` and replace `div` with it
+3. Replace `div` with `ListWrapper`
 
-```javascript
-// Styling
-import { ListWrapper } from "../styles";
-```
+   ```javascript
+   return <ListWrapper>{cookieList}</ListWrapper>;
+   ```
 
-4. Replace `div` with `ListWrapper`
+4. In `CookieItem`, I'm gonna go for a different approach with styled components. Since we said that styled components uses CSS, let's apply some of the CSS properties we learnt.
 
-```javascript
-return <ListWrapper>{cookieList}</ListWrapper>;
-```
+5. Let's start with creating a styled component called `CookieWrapper` for the `div` in `CookieItem`, move the style from `styles.cookie` and convert it to CSS.
 
-5. In `CookieItem`, I'm gonna go for a different approach with styled components. Since we said that styled components uses CSS, let's apply some of the CSS properties we learnt.
+   ```javascript
+   export const CookieWrapper = styled.div`
+     margin: 20px;
+   `;
+   ```
 
-6. Let's start with creating a styled component called `CookieWrapper` for the `div` in `CookieItem`, move the style from `styles.cookie` and convert it to CSS.
+6. Apply the changes in `CookieItem`. Also let's remove the styling coming from `styles`
 
-```javascript
-const CookieWrapper = styled.div`
-  margin: 20px;
-`;
-```
+   ```jsx
+   <CookieWrapper>
+     <img alt={cookie.name} src={cookie.image} />
+     <p>{cookie.name}</p>
+     <p>{cookie.price} KD</p>
+   </CookieWrapper>
+   ```
 
-7. Don't forget to export and import `CookieWrapper`.
+7. Now `img` and `p` are inside `div`, we don't need to create a styled component for each of them. We can apply a certain style for all `img` and `p` tags inside `CookieWrapper`. Let's start with `img` tag:
 
-```javascript
-export { CookieWrapper, Description, ListWrapper, Title, ShopImage };
-```
+   ```javascript
+   export const CookieWrapper = styled.div`
+     margin: 20px;
 
-8. Apply the changes in `CookieItem`. Also let's remove the styling coming from `styles`
+     img {
+       width: 200px;
+       height: 200px;
+     }
+   `;
+   ```
 
-```jsx
-<CookieWrapper>
-  <img alt={cookie.name} src={cookie.image} />
-  <p>{cookie.name}</p>
-  <p>{cookie.price} KD</p>
-</CookieWrapper>
-```
+8. How cool is that? Let's style the `p` tag:
 
-9. Now `img` and `p` are inside `div`, we don't need to create a styled component for each of them. We can apply a certain style for all `img` and `p` tags inside `CookieWrapper`. Let's start with `img` tag:
+   ```javascript
+   export const CookieWrapper = styled.div`
+     margin: 20px;
 
-```javascript
-const CookieWrapper = styled.div`
-  margin: 20px;
+     img {
+       width: 200px;
+       height: 200px;
+     }
 
-  img {
-    width: 200px;
-    height: 200px;
-  }
-`;
-```
+     p {
+       text-align: center;
+     }
+   `;
+   ```
 
-10. How cool is that? Let's style the `p` tag:
+9. Let's say I want to change the price color to pink. I'll give it a class, remember in `JSX` our class attribute is called `className` not `class`
 
-```javascript
-const CookieWrapper = styled.div`
-  margin: 20px;
+   ```jsx
+   <CookieWrapper>
+     <img alt={cookie.name} src={cookie.image} />
+     <p>{cookie.name}</p>
+     <p className="cookie-price">{cookie.price} KD</p>
+   </CookieWrapper>
+   ```
 
-  img {
-    width: 200px;
-    height: 200px;
-  }
+10. In `CookieWrapper`, inside the `p` tag I'll add the `cookie-price` class
 
-  p {
-    text-align: center;
-  }
-`;
-```
+    ```
+    p {
+      text-align: center;
 
-11. Let's say I want to change the price color to pink. I'll give it a class, remember in `JSX` our class attribute is called `className` not `class`
+      .cookie-price {
+        color: #ff85a2
+      }
+    }
+    ```
 
-```jsx
-<CookieWrapper>
-  <img alt={cookie.name} src={cookie.image} />
-  <p>{cookie.name}</p>
-  <p className="cookie-price">{cookie.price} KD</p>
-</CookieWrapper>
-```
+11. Nothing happened. To apply a class inside a tag we need to add the `&` sign
 
-12. In `CookieWrapper`, inside the `p` tag I'll add the `cookie-price` class
+    ```
+    p {
+      text-align: center;
 
-```css
-p {
-text-align: center;
-
-  .cookie-price {
-    color: #ff85a2
-  }
-}
-`;
-```
-
-13. Nothing happened. To apply a class inside a tag we need to add the `&` sign
-
-```css
-p {
-text-align: center;
-
-  &.cookie-price {
-    color: #ff85a2
-  }
-}
-`;
-```
+      &.cookie-price {
+        color: #ff85a2
+      }
+    }
+    ```
