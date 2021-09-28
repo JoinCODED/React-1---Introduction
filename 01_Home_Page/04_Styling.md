@@ -21,13 +21,13 @@
 5. Whenever we use JavaScript inside JSX, we need to wrap it with curly brackets. In this case, we have double curly brackets, one is for JSX and the other is because we're passing an object to `style`.
 
    ```jsx
-   <h1 style={{ textAlign: "center" }}>Cookies and Beyond</h1>
+   <h1 style={{ textAlign: 'center' }}>Cookies and Beyond</h1>
    ```
 
 6. Let's also center the description.
 
    ```jsx
-   <h4 style={{ textAlign: "center" }}>Where cookie maniacs gather</h4>
+   <h4 style={{ textAlign: 'center' }}>Where cookie maniacs gather</h4>
    ```
 
 7. Now let's center the image. Honestly I don't know how to do that, so let's [google it](https://www.w3schools.com/howto/howto_css_image_center.asp). Any style I need I will look for it in HTML and CSS, then convert it to JavaScript. Let's add the code:
@@ -52,48 +52,45 @@
    }}
    ```
 
-9. As you can see, our code is starting to become bulky. So we will create a `styles` object before the `App` function and move all our object styles:
+9. As you can see, our code is starting to become bulky. So we will create a `styles.css` file in the `src` folder and we will import it in `App.js` file after the import of `App.css` and move all our object styles and fix the keys from camelCase to kebab-case:
 
-   ```javascript
-   const styles = {};
+```javascript
+import './App.css';
+import './styles.css';
+```
 
-   function App() {
-     [...]
-   }
-   ```
+10. Since the title and description have the same style, we can combine them under the key `text`. You're free to give your style classes whatever name you want, just make sure it's clear what this class is doing:
 
-10. Since the title and description have the same style, we can combine them under the key `text`. You're free to give your style objects whatever name you want, just make sure it's clear what this object is doing:
-
-    ```javascript
-    const styles = {
-      text: { textAlign: "center" },
-    };
+    ```css
+    .text {
+      text-align: center;
+    }
     ```
 
-11. Let's add the image's styling as well. Since this styling is specific for the shop's image, I'll call it `shopImage`.
+11. Let's add the image's styling as well. Since this styling is specific for the shop's image, I'll call it `shop-image`.
 
-    ```javascript
-    const styles = {
-      text: { textAlign: "center" },
-      shopImage: {
-        display: "block",
-        marginLeft: "auto",
-        marginRight: "auto",
-        width: "50%",
-      },
-    };
+    ```css
+    .text {
+      text-align: center;
+    }
+    .shop-image {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 50%;
+    }
     ```
 
-12. Now we can replace the objects. Wow! This looks much better.
+12. Now we can replace the objects with classes. Wow! This looks much better.
 
     ```jsx
     <div>
-      <h1 style={styles.text}>Cookies and Beyond</h1>
-      <h4 style={styles.text}>Where cookie maniacs gather</h4>
+      <h1 className="text">Cookies and Beyond</h1>
+      <h4 className="text">Where cookie maniacs gather</h4>
       <img
         alt="cookie shop"
         src="https://i.pinimg.com/originals/8f/cf/71/8fcf719bce331fe39d7e31ebf07349f3.jpg"
-        style={styles.shopImage}
+        className="shop-image"
       />
     </div>
     ```

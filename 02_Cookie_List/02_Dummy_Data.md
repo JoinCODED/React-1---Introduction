@@ -35,30 +35,30 @@ Let's take a look at the list of cookies. We can see that they all have a `name`
 3. Let's go to our first cookie and replace `Chocolate Chip Cookie` with the cookie from the array:
 
    ```jsx
-   <div style={styles.cookie}>
+   <div className="cookie">
      [...]
-     <p style={styles.text}>cookies[0].name</p>
-     <p style={styles.text}>10 KD</p>
+     <p className="text">cookies[0].name</p>
+     <p className="text">10 KD</p>
    </div>
    ```
 
 4. Oops.. the cookie name was not rendered. What did we say about writing JavaScript inside JSX? It must be wrapped in curly brackets.
 
    ```jsx
-   <p style={styles.text}>{cookies[0].name}</p>
+   <p className="text">{cookies[0].name}</p>
    ```
 
 5. Let's apply this to the other fields
 
    ```jsx
-   <div style={styles.cookie}>
+   <div className="cookie">
      <img
-       style={styles.cookieImage}
+       className="cookie-image"
        alt={cookies[0].name}
        src={cookies[0].image}
      />
-     <p style={styles.text}>{cookies[0].name}</p>
-     <p style={styles.text}>{cookies[0].price} KD</p>
+     <p className="text">{cookies[0].name}</p>
+     <p className="text">{cookies[0].price} KD</p>
    </div>
    ```
 
@@ -82,13 +82,13 @@ Let's take a look at the list of cookies. We can see that they all have a `name`
 7. Let's also apply this to the other cookie:
 
    ```jsx
-   <div style={styles.cookie}>
+   <div className="cookie">
      <img
-       style={styles.cookieImage}
+       className="cookie-image"
        alt={cookies[1].name}
        src={cookies[1].image}
      />
-     <p style={styles.text}>{cookies[1].name}</p>
-     <p style={styles.text}>{cookies[1].price} KD</p>
+     <p className="text">{cookies[1].name}</p>
+     <p className="text">{cookies[1].price} KD</p>
    </div>
    ```

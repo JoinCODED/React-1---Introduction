@@ -13,39 +13,32 @@
    ```javascript
    const CookieItem = () => {
      return (
-       <div style={styles.cookie}>
-         <img style={styles.cookieImage} alt={cookie.name} src={cookie.image} />
-         <p style={styles.text}>{cookie.name}</p>
-         <p style={styles.text}>{cookie.price} KD</p>
+       <div className="cookie">
+         <img className="cookie-image" alt={cookie.name} src={cookie.image} />
+         <p className="text">{cookie.name}</p>
+         <p className="text">{cookie.price} KD</p>
        </div>
      );
    };
    ```
 
-5. We also need to import `styles`.
-
-   ```javascript
-   // Styling
-   import styles from "../styles";
-   ```
-
-6. Let's not forget to export the component at the bottom of the file.
+5. Let's not forget to export the component at the bottom of the file.
 
    ```javascript
    export default CookieItem;
    ```
 
-7. In `CookieList.js`, import `CookieItem`.
+6. In `CookieList.js`, import `CookieItem`.
 
    ```javascript
    // Components
-   import CookieItem from "./CookieItem";
+   import CookieItem from './CookieItem';
    ```
 
-8. We will render `CookieItem` in the `map` method.
+7. We will render `CookieItem` in the `map` method.
 
    ```javascript
    const cookieList = cookiesData.map((cookie) => <CookieItem />);
    ```
 
-9. And we got an error! `'cookie' is not defined`. But how can we pass `cookie` from the `map` method in `CookieList` to `CookieItem`? Especially that `cookie` represents a different cookie through the iteration, every instance of `CookieItem` needs a different `cookie`!
+8. And we got an error! `'cookie' is not defined`. But how can we pass `cookie` from the `map` method in `CookieList` to `CookieItem`? Especially that `cookie` represents a different cookie through the iteration, every instance of `CookieItem` needs a different `cookie`!
