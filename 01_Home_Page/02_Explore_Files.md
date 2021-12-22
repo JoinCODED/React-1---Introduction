@@ -1,9 +1,9 @@
 1. Let's open our application and take a look at its structure and explore the main files:
 
-   1. `package.json`: Every `yarn` project must have this file. It basically gives `yarn` all the information it needs to know about the app and the used dependencies.
+   1. `package.json`: Every `npm` project must have this file. It basically gives `npm` all the information it needs to know about the app and the used dependencies.
    2. `README.md`: A file with some information about the application. It's okay to remove it.
    3. `.gitignore`: A file that contains the name of files and directories that github should ignore and not push to the repository.
-   4. `node_modules`: A folder that contains all the libraries and dependencies that `yarn` downloaded.
+   4. `node_modules`: A folder that contains all the libraries and dependencies that `npm` downloaded.
    5. `public`: A folder that has the images, fonts and an html file which is the main file in our application.
    6. `src`: The main folder that we will interact with when building our application. For now, we care about two files in it:
       1. `App.js`: This is where we will write our code.
