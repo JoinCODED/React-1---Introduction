@@ -28,16 +28,16 @@
      const cookieList = cookiesData.map((cookie) => <p>{cookie.name}</p>);
      return (
        <div>
-         <div style={styles.body}>
-           <h1 style={styles.text}>Cookies and Beyond</h1>
-           <h4 style={styles.text}>Where cookie maniacs gather</h4>
+         <div className="body">
+           <h1 className="text">Cookies and Beyond</h1>
+           <h4 className="text">Where cookie maniacs gather</h4>
            <img
              alt="cookie shop"
              src="https://i.pinimg.com/originals/8f/cf/71/8fcf719bce331fe39d7e31ebf07349f3.jpg"
-             style={styles.shopImage}
+             className="shop-image"
            />
          </div>
-         <div style={styles.cookieList}>{cookieList}</div>
+         <div className="list">{cookieList}</div>
        </div>
      );
    }
@@ -47,10 +47,10 @@
 
    ```jsx
    const cookieList = cookiesData.map((cookie) => (
-     <div style={styles.cookie}>
-       <img style={styles.cookieImage} alt={cookie.name} src={cookie.image} />
-       <p style={styles.text}>{cookie.name}</p>
-       <p style={styles.text}>{cookie.price} KD</p>
+     <div className="cookie">
+       <img className="cookie-image" alt={cookie.name} src={cookie.image} />
+       <p className="text">{cookie.name}</p>
+       <p className="text">{cookie.price} KD</p>
      </div>
    ));
    ```
@@ -58,7 +58,7 @@
 6. Let's remove the cookie items from the return and replace them with `cookieList`:
 
    ```jsx
-   <div style={styles.list}>{cookieList}</div>
+   <div className="list">{cookieList}</div>
    ```
 
 7. Yay! Our new cookie is added!

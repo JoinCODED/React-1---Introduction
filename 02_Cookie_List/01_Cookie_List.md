@@ -5,12 +5,12 @@ Let's add a list of cookies to our page right under the cookie shop image.
    ```jsx
    <div>
      <div>
-       <h1 style={styles.text}>Cookies and Beyond</h1>
-       <h4 style={styles.text}>Where cookie maniacs gather</h4>
+       <h1 className="text">Cookies and Beyond</h1>
+       <h4 className="text">Where cookie maniacs gather</h4>
        <img
          alt="cookie shop"
          src="https://i.pinimg.com/originals/8f/cf/71/8fcf719bce331fe39d7e31ebf07349f3.jpg"
-         style={styles.shopImage}
+         className="shop-image"
        />
      </div>
      <div></div>
@@ -30,19 +30,19 @@ Let's add a list of cookies to our page right under the cookie shop image.
    </div>
    ```
 
-3. Let's style it a bit by giving every image a height and width and centering the text. In our `styles` object, we'll add a new styling object for the cookie image and we'll apply `text` style to the name and price.
+3. Let's style it a bit by giving every image a height and width and centering the text. In our `styles.css` file, we'll add a new styling class for the cookie image and we'll apply `text` style to the name and price.
 
-   ```javascript
-   const styles = {
-     text: { textAlign: "center" },
-     shopImage: {
-       display: "block",
-       marginLeft: "auto",
-       marginRight: "auto",
-       width: "50%",
-     },
-     cookieImage: { width: "200px", height: "200px" },
-   };
+   ```css
+    .text {
+      text-align: center;
+    }
+    .shop-image {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 50%;
+    }
+    .cookie-image { width: 200px; height: 200px },
    ```
 
 4. Let's apply it on our cookie:
@@ -52,10 +52,10 @@ Let's add a list of cookies to our page right under the cookie shop image.
      <img
        alt="chocolate chip cookie"
        src="https://joyfoodsunshine.com/wp-content/uploads/2016/01/best-chocolate-chip-cookies-recipe-ever-no-chilling-1.jpg"
-       style={styles.cookieImage}
+       className="cookie-image"
      />
-     <p style={styles.text}>Chocolate Chip Cookie</p>
-     <p style={styles.text}>10 KD</p>
+     <p className="text">Chocolate Chip Cookie</p>
+     <p className="text">10 KD</p>
    </div>
    ```
 
@@ -66,24 +66,21 @@ Let's add a list of cookies to our page right under the cookie shop image.
      <img
        alt="cute cookie"
        src="https://i.pinimg.com/originals/f6/3e/2a/f63e2a1cd0c7d3c0ab9cd277d3f32050.jpg"
-       style={styles.cookieImage}
+       className="cookie-image"
      />
-     <p style={styles.text}>Cute Cookie</p>
-     <p style={styles.text}>8 KD</p>
+     <p className="text">Cute Cookie</p>
+     <p className="text">8 KD</p>
    </div>
    ```
 
 6. But the design is awful. Let's fix it by styling the `div` tag that's wrapping all three cookies:
 
-   ```javascript
-   const styles = {
-     ...
-     list: {
-       alignItems: "center",
-       justifyContent: "center",
-       display: "flex"
-     }
-   };
+   ```css
+   ... .list {
+     align-items: center;
+     justify-content: center;
+     display: flex;
+   }
    ```
 
    And apply the styles:
@@ -92,23 +89,22 @@ Let's add a list of cookies to our page right under the cookie shop image.
    return (
      <div>
        <div>...</div>
-       <div style={styles.list}>...</div>
+       <div className="list">...</div>
      </div>
    );
    ```
 
 7. Also, for every cookie `div` we will add a margin to make some space between them.
 
-   ```javascript
-   const styles = {
-     ...
-     list: {
-       alignItems: "center",
-       justifyContent: "center",
-       display: "flex"
-     },
-     cookie: { margin: "20px" }
-   };
+   ```css
+   ... .list {
+     align-items: center;
+     justify-content: center;
+     display: flex;
+   }
+   .cookie {
+     margin: 20px;
+   }
    ```
 
    And apply the styles:
@@ -117,9 +113,9 @@ Let's add a list of cookies to our page right under the cookie shop image.
    return (
      <div>
        <div>...</div>
-       <div style={styles.list}>
-         <div style={styles.cookie}>...</div>
-         <div style={styles.cookie}>...</div>
+       <div className="list">
+         <div className="cookie">...</div>
+         <div className="cookie">...</div>
        </div>
      </div>
    );

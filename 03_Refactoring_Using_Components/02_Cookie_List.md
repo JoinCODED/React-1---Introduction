@@ -22,15 +22,15 @@ Let's also create a component for our list of cookies.
 
    ```javascript
    // Components
-   import CookieList from "./components/CookieList";
-   import Home from "./components/Home";
+   import CookieList from './components/CookieList';
+   import Home from './components/Home';
    ```
 
 5. Render it under `Home`.
 
    ```jsx
      return (
-       <div style={styles.body}>
+       <div className="body">
            <div>...</div>
            <Home />
            <CookieList />
@@ -44,44 +44,34 @@ Let's also create a component for our list of cookies.
 
    ```jsx
    const CookieList = () => {
-     return <div style={styles.list}>{cookieList}</div>;
+     return <div className="list">{cookieList}</div>;
    };
    ```
 
-7. We got two errors: `'styles' is not defined` and `'cookieList' is not defined`
+7. We got one error: `'cookieList' is not defined`
 
-8. We need to import `styles` in `CookieList.js`.
-
-   ```javascript
-   // Styling
-   import styles from "../styles";
-   ```
-
-9. We also need to move our `cookieList` variable from `App.js`:
+8. We need to move our `cookieList` variable from `App.js`:
 
    ```javascript
    const CookieList = () => {
      const cookieList = cookiesData.map((cookie) => (
-       <div style={styles.cookie}>
-         <img style={styles.cookieImage} alt={cookie.name} src={cookie.image} />
-         <p style={styles.text}>{cookie.name}</p>
-         <p style={styles.text}>{cookie.price} KD</p>
+       <div className="cookie">
+         <img className="cookie-image" alt={cookie.name} src={cookie.image} />
+         <p className="text">{cookie.name}</p>
+         <p className="text">{cookie.price} KD</p>
        </div>
      ));
-     return <div style={styles.list}>{cookieList}</div>;
+     return <div className="list">{cookieList}</div>;
    };
    ```
 
-10. We got another error: `'cookiesData' is not defined`.
+9. We got another error: `'cookiesData' is not defined`.
 
-11. We need to import `cookiesData` as well in `CookieList.js`.
+10. We need to import `cookiesData` as well in `CookieList.js`.
 
     ```javascript
     // Data
-    import cookiesData from "../cookies";
-
-    // Styling
-    import styles from "../styles";
+    import cookiesData from '../cookies';
     ```
 
-12. Let's check our website, nothing changed. Which means that this worked!
+11. Let's check our website, nothing changed. Which means that this worked!

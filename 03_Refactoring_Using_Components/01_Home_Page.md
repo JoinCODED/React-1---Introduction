@@ -32,7 +32,7 @@ At this point, all of our code is in `App.js`. But what will happen when our web
 
    ```javascript
    // Components
-   import Home from "./components/Home";
+   import Home from './components/Home';
    ```
 
 7. Now how can we render `Home`? Any guesses?
@@ -41,7 +41,7 @@ At this point, all of our code is in `App.js`. But what will happen when our web
 
    ```jsx
    return (
-       <div style={styles.body}>
+       <div className="body">
            <div>...</div>
            <Home />
        <div>
@@ -55,7 +55,7 @@ At this point, all of our code is in `App.js`. But what will happen when our web
    ```jsx
    function App() {
    return (
-       <div style={styles.body}>
+       <div className="body">
            <div>...</div>
            <Home />
            <Home />
@@ -72,25 +72,14 @@ Nice! Let's remove them now.
     const Home = () => {
       return (
         <div>
-          <h1 style={styles.text}>Cookies and Beyond</h1>
-          <h4 style={styles.text}>Where cookie maniacs gather</h4>
+          <h1 className="text">Cookies and Beyond</h1>
+          <h4 style="text">Where cookie maniacs gather</h4>
           <img
             alt="cookie shop"
             src="https://i.pinimg.com/originals/8f/cf/71/8fcf719bce331fe39d7e31ebf07349f3.jpg"
-            style={styles.shopImage}
+            style="shop-image"
           />
         </div>
       );
     };
     ```
-
-12. We got an error: `'styles' is not defined`.
-
-13. We need to import `styles` in `Home.js`! Regarding the path, this time `Home.js` wants to access `styles.js` which is outside the `components` folder, so `Home.js` must leave `components` to reach `styles.js`. To reach for a higher directory the path will start `../` followed by `styles` which is the file we need to access.
-
-    ```javascript
-    // Styling
-    import styles from "../styles";
-    ```
-
-14. Let's check our website, nothing changed. Which means that this worked!

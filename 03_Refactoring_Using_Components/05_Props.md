@@ -6,7 +6,7 @@ This is when we introduce a very powerful super power of React called `props`.
 
    ```javascript
    return (
-     <div style={styles.list}>
+     <div className="list">
        {/* {cookieList} */}
        <CookieItem name="Chocolate Cookie" />
      </div>
@@ -23,10 +23,10 @@ This process is called passing `Chocolate Cookie` as a prop.
    const CookieItem = () => {
      console.log(props);
      return (
-       <div style={styles.cookie} key={cookie.id}>
-         {/* <img style={styles.cookieImage} alt={cookie.name} src={cookie.image} />
-         <p style={styles.text}>{cookie.name}</p>
-         <p style={styles.text}>{cookie.price} KD</p> */}
+       <div className="cookie" key={cookie.id}>
+         {/* <img className="cookie-image" alt={cookie.name} src={cookie.image} />
+         <p className="text">{cookie.name}</p>
+         <p className="text">{cookie.price} KD</p> */}
        </div>
      );
    };
@@ -48,11 +48,11 @@ This process is called passing `Chocolate Cookie` as a prop.
    const CookieItem = () => {
      console.log(props);
      return (
-       <div style={styles.cookie} key={cookie.id}>
+       <div className="cookie" key={cookie.id}>
          <p>{props.name}</p>
-         {/* <img style={styles.cookieImage} alt={cookie.name} src={cookie.image} />
-         <p style={styles.text}>{cookie.name}</p>
-         <p style={styles.text}>{cookie.price} KD</p> */}
+         {/* <img className="cookie-image" alt={cookie.name} src={cookie.image} />
+         <p className="text">{cookie.name}</p>
+         <p className="text">{cookie.price} KD</p> */}
        </div>
      );
    };
@@ -72,12 +72,12 @@ This process is called passing `Chocolate Cookie` as a prop.
     const CookieItem = () => {
       console.log(props);
       return (
-        <div style={styles.cookie} key={cookie.id}>
+        <div className="cookie" key={cookie.id}>
           <p>{props.name}</p>
           <p>{props.price}</p>
-          {/* <img style={styles.cookieImage} alt={cookie.name} src={cookie.image} />
-          <p style={styles.text}>{cookie.name}</p>
-          <p style={styles.text}>{cookie.price} KD</p> */}
+          {/* <img className="cookieImage" alt={cookie.name} src={cookie.image} />
+          <p className="text">{cookie.name}</p>
+          <p className="text">{cookie.price} KD</p> */}
         </div>
       );
     };
@@ -99,13 +99,13 @@ This process is called passing `Chocolate Cookie` as a prop.
     const CookieItem = () => {
       console.log(props);
       return (
-        <div style={styles.cookie} key={cookie.id}>
+        <div className="cookie" key={cookie.id}>
           <p>{props.name}</p>
           <p>{props.price}</p>
           <img src={props.image} />
-          {/* <img style={styles.cookieImage} alt={cookie.name} src={cookie.image} />
-          <p style={styles.text}>{cookie.name}</p>
-          <p style={styles.text}>{cookie.price} KD</p> */}
+          {/* <img className="cookie-image" alt={cookie.name} src={cookie.image} />
+          <p className="text">{cookie.name}</p>
+          <p className="text">{cookie.price} KD</p> */}
         </div>
       );
     };
@@ -119,12 +119,12 @@ This process is called passing `Chocolate Cookie` as a prop.
       //   <CookieItem cookie={cookie} />
       // ));
       const cookie = {
-        name: "Chocolate Cookie",
+        name: 'Chocolate Cookie',
         price: 7,
-        image: "https://www.meals.com/imagesrecipes/144807lrg.jpg",
+        image: 'https://www.meals.com/imagesrecipes/144807lrg.jpg',
       };
       return (
-        <div style={styles.list}>
+        <div className="list">
           {/* {cookieList} */}
           <CookieItem cookie={cookie} />
         </div>
@@ -136,13 +136,13 @@ This process is called passing `Chocolate Cookie` as a prop.
 
     ```jsx
     return (
-      <div style={styles.cookie}>
+      <div className="cookie">
         <p>{props.cookie.name}</p>
         <p>{props.cookie.price}</p>
         <img src={props.cookie.image} />
-        {/* <img style={styles.cookieImage} alt={cookie.name} src={cookie.image} />
-          <p style={styles.text}>{cookie.name}</p>
-          <p style={styles.text}>{cookie.price} KD</p> */}
+        {/* <img className="cookie-image" alt={cookie.name} src={cookie.image} />
+          <p className="text">{cookie.name}</p>
+          <p className="text">{cookie.price} KD</p> */}
       </div>
     );
     ```
@@ -153,13 +153,13 @@ This process is called passing `Chocolate Cookie` as a prop.
     const CookieItem = props => {
       const cookie = props.cookie;
       return (
-        <div style={styles.cookie}>
+        <div className="cookie">
           <p>{cookie.name}</p>
           <p>{cookie.price}</p>
           <img src={cookie.image} />
-          {/* <img style={styles.cookieImage} alt={cookie.name} src={cookie.image} />
-            <p style={styles.text}>{cookie.name}</p>
-            <p style={styles.text}>{cookie.price} KD</p> */}
+          {/* <img className=cookie-image alt={cookie.name} src={cookie.image} />
+            <p className="text">{cookie.name}</p>
+            <p className="text">{cookie.price} KD</p> */}
         </div>
       );
     ```
@@ -170,10 +170,10 @@ This process is called passing `Chocolate Cookie` as a prop.
     const CookieItem = props => {
       const cookie = props.cookie;
       return (
-        <div style={styles.cookie}>
-            <img style={styles.cookieImage} alt={cookie.name} src={cookie.image} />
-            <p style={styles.text}>{cookie.name}</p>
-            <p style={styles.text}>{cookie.price} KD</p>
+        <div className="cookie">
+            <img className="cookie-image" alt={cookie.name} src={cookie.image} />
+            <p className="text">{cookie.name}</p>
+            <p className="text">{cookie.price} KD</p>
         </div>
       );
     ```
@@ -183,7 +183,7 @@ This process is called passing `Chocolate Cookie` as a prop.
     ```javascript
     const CookieList = () => {
       return (
-        <div style={styles.list}>
+        <div className="list">
           <CookieItem cookie={cookiesData[0]} />
           <CookieItem cookie={cookiesData[1]} />
           <CookieItem cookie={cookiesData[2]} />
@@ -221,24 +221,24 @@ This process is called passing `Chocolate Cookie` as a prop.
     const data = [
       {
         id: 1,
-        name: "Chocolate Chip Cookie",
+        name: 'Chocolate Chip Cookie',
         price: 10,
         image:
-          "https://joyfoodsunshine.com/wp-content/uploads/2016/01/best-chocolate-chip-cookies-recipe-ever-no-chilling-1.jpg",
+          'https://joyfoodsunshine.com/wp-content/uploads/2016/01/best-chocolate-chip-cookies-recipe-ever-no-chilling-1.jpg',
       },
       {
         id: 2,
-        name: "Adorable Cookie",
+        name: 'Adorable Cookie',
         price: 15,
         image:
-          "https://i.pinimg.com/originals/f6/3e/2a/f63e2a1cd0c7d3c0ab9cd277d3f32050.jpg",
+          'https://i.pinimg.com/originals/f6/3e/2a/f63e2a1cd0c7d3c0ab9cd277d3f32050.jpg',
       },
       {
         id: 3,
-        name: "Katakeet Cookie",
+        name: 'Katakeet Cookie',
         price: 7,
         image:
-          "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fassets.marthastewart.com%2Fstyles%2Fwmax-750%2Fd34%2Feaster-chick-egg-cookies-102921707%2Feaster-chick-egg-cookies-102921707_horiz.jpg%3Fitok%3DUBZfwNLI",
+          'https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fassets.marthastewart.com%2Fstyles%2Fwmax-750%2Fd34%2Feaster-chick-egg-cookies-102921707%2Feaster-chick-egg-cookies-102921707_horiz.jpg%3Fitok%3DUBZfwNLI',
       },
     ];
 
